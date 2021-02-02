@@ -31,6 +31,7 @@ public class CartControllerTest {
     public static final String PRODUCT_DESCRIPTION = "description1";
     public static final int PRODUCT_QUANTITY = 1;
     private static final String ID = "1";
+    private static final String PRODUCT_ID = "1";
 
     @Autowired
     private MockMvc mockMvc;
@@ -51,14 +52,16 @@ public class CartControllerTest {
                 .andReturn().getResponse().getContentAsString();
 
         JSONObject jsonObject = new JSONObject(responseBodyString);
-        JSONAssert.assertEquals("{\"items\":[{\"product\":{\"name\":\"" + PRODUCT_NAME + "\",\"description\":"
-                + "\"" + PRODUCT_DESCRIPTION + "\"},\"quantity\": " + PRODUCT_QUANTITY + "}]}", jsonObject, true);
+        JSONAssert.assertEquals("{\"items\":[{\"product\":{\"id\": \""+ PRODUCT_ID + "\", \"name\":\"" +
+                PRODUCT_NAME + "\",\"description\":" + "\"" + PRODUCT_DESCRIPTION + "\"},\"quantity\": " +
+                PRODUCT_QUANTITY + "}]}", jsonObject, true);
     }
 
     private CartDTO buildMockCartDTO() {
         List<CartItemDTO> items = new ArrayList<>();
         CartItemDTO cartItemDTO1 = CartItemDTO.builder()
                 .product(ProductDTO.builder()
+                        .id(PRODUCT_ID)
                         .name(PRODUCT_NAME)
                         .description(PRODUCT_DESCRIPTION)
                         .build())

@@ -24,6 +24,7 @@ public class ProductControllerTest {
     private static final String PRODUCT_NAME = "product1";
     private static final String PRODUCT_DESCRIPTION = "description1";
     public static final String PRODUCT_URL = "/product";
+    private static final String PRODUCT_ID = "1";
 
     @Autowired
     private MockMvc mockMvc;
@@ -42,14 +43,15 @@ public class ProductControllerTest {
                 .andReturn().getResponse().getContentAsString();
 
         JSONObject jsonObject = new JSONObject(responseBodyString);
-        JSONAssert.assertEquals("{\"products\":[{\"name\":\"" + PRODUCT_NAME + "\",\"description\":"
-                + "\"" + PRODUCT_DESCRIPTION + "\"}]}", jsonObject, true);
+        JSONAssert.assertEquals("{\"products\":[{\"id\": \"" + PRODUCT_ID + "\", \"name\":\"" + PRODUCT_NAME +
+                "\",\"description\":" + "\"" + PRODUCT_DESCRIPTION + "\"}]}", jsonObject, true);
 
     }
 
     private ProductListDTO buildMockProductListDTO() {
         List<ProductDTO> products = new ArrayList<>();
         ProductDTO productDTO1 = ProductDTO.builder()
+                .id(PRODUCT_ID)
                 .name(PRODUCT_NAME)
                 .description(PRODUCT_DESCRIPTION)
                 .build();
