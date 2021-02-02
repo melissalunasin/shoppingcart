@@ -36,38 +36,28 @@ public class ShopppingcartApplication {
 			cartRepository.deleteAll();
 
 			Product product1 = new Product();
-//			product1.setId(UUID.randomUUID().toString());
 			product1.setName("product1");
 			product1.setDescription("This is product1");
 			productRepository.save(product1);
 
 			CartItem cartItem1 = new CartItem();
-//			cartItem1.setId(UUID.randomUUID().toString());
 			cartItem1.setProduct(product1);
 			cartItem1.setQuantity(1);
-//			cartItem1.setCart(newCart);
-//			cartItemRepository.save(cartItem1);
 
 			Product product2 = new Product();
-//			product2.setId(UUID.randomUUID().toString());
 			product2.setName("product2");
 			product2.setDescription("This is product2");
 			productRepository.save(product2);
 
 			CartItem cartItem2 = new CartItem();
-//			cartItem2.setId(UUID.randomUUID().toString());
 			cartItem2.setProduct(product2);
 			cartItem2.setQuantity(2);
-//			cartItem2.setCart(newCart);
-//			cartItemRepository.save(cartItem2);
 
 			Set<CartItem> cartItems = new HashSet<>();
 			cartItems.add(cartItem1);
 			cartItems.add(cartItem2);
 			Cart newCart = new Cart();
 			newCart.setCartItems(cartItems);
-//			String cartId = "75068d80-e92f-498d-ae4c-38ffb85fdc0c";
-//			newCart.setId(cartId);
 			cartRepository.save(newCart);
 
 			List<Cart> carts = cartRepository.findAll();
