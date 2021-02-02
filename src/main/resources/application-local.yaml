@@ -1,0 +1,7 @@
+logging:
+  level:
+    root: debug
+    org:
+      springframework:
+        web: debug
+    hibernate: debug
